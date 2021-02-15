@@ -1,0 +1,68 @@
+{
+  "project_info": {
+    "project_number": "1037246836576",
+    "project_id": "appcolormemory",
+    "storage_bucket": "appcolormemory.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037246836576:android:3a718e081a5820f1bb7805",
+        "android_client_info": {
+          "package_name": "com.dut.firebaseoc"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037246836576-elfvi80sk3busa0dfbfomie6ovbjv2ji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCu4U-MHrYzBBSqyr9q8BLzdEEr67_NB3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037246836576-elfvi80sk3busa0dfbfomie6ovbjv2ji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:1037246836576:android:9b18ddd4d3128ef1bb7805",
+        "android_client_info": {
+          "package_name": "com.example.appcolormemory"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "1037246836576-elfvi80sk3busa0dfbfomie6ovbjv2ji.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCu4U-MHrYzBBSqyr9q8BLzdEEr67_NB3U"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "1037246836576-elfvi80sk3busa0dfbfomie6ovbjv2ji.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
