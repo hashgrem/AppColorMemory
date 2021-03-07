@@ -35,5 +35,12 @@ public class DatabaseAccess {
 
 
     //requetes ici.
+
+    public String addFirstName(String firstNameUser){
+
+        c = db.rawQuery("INSERT INTO users (firstName) values(?)", new String[]{firstNameUser});
+        c.moveToFirst();
+        return c.getString(0);
+    }
 }
 
