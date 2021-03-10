@@ -6,4 +6,27 @@
     android:layout_height="match_parent"
     tools:context=".Profil">
 
+    <TextView
+        android:id="@+id/id_nom_utilisateur2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="Nom utilisateur"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.504"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_main_menu2"
+        app:layout_constraintVertical_bias="0.062" />
+
+    <TextView
+        android:id="@+id/msg_main_menu2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="96dp"
+        android:gravity="center"
+        android:text="Profil"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
 </androidx.constraintlayout.widget.ConstraintLayout>
