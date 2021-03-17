@@ -39,7 +39,7 @@ public class DatabaseAccess {
     public String addFirstName(String firstNameUser){
 
         c = db.rawQuery("INSERT INTO users (firstName) values(?)", new String[]{firstNameUser});
-        c.moveToFirst();
+        c.moveToFirst(); //tester si la requête a renvoyé un ensemble vide (en testant la valeur de retour) et il déplace le curseur vers le premier résultat
         return c.getString(1); //colonne dans la bd ?
     }
 
