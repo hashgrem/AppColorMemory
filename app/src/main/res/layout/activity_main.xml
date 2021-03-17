@@ -7,36 +7,36 @@
     tools:context=".MainActivity">
 
     <ImageButton
-        android:id="@+id/imageButton8"
+        android:id="@+id/imageButtonBleu"
         android:layout_width="163dp"
         android:layout_height="155dp"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/image_btn_bleu"
+        android:background="@drawable/image_Btn_bleu"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <ImageButton
-        android:id="@+id/imageButton9"
+        android:id="@+id/imageButtonOrange"
         android:layout_width="163dp"
         android:layout_height="155dp"
-        android:background="@drawable/image_btn_orange"
+        android:background="@drawable/image_Btn_Orange"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
     <ImageButton
-        android:id="@+id/imageButton10"
+        android:id="@+id/imageButtonRouge"
         android:layout_width="163dp"
         android:layout_height="155dp"
-        android:background="@drawable/image_btn_rouge"
+        android:background="@drawable/image_Btn_rouge"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
     <ImageButton
-        android:id="@+id/imageButton5"
+        android:id="@+id/imageButtonVert"
         android:layout_width="163dp"
         android:layout_height="155dp"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/image_btn_vert"
+        android:background="@drawable/image_Btn_vert"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline" />
 
