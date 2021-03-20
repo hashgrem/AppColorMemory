@@ -5,13 +5,12 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
-
     <ImageButton
         android:id="@+id/imageButtonBleu"
         android:layout_width="163dp"
         android:layout_height="155dp"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/image_Btn_bleu"
+        android:background="@drawable/image_btn_bleu"
         app:layout_constraintEnd_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -19,7 +18,7 @@
         android:id="@+id/imageButtonOrange"
         android:layout_width="163dp"
         android:layout_height="155dp"
-        android:background="@drawable/image_Btn_Orange"
+        android:background="@drawable/image_btn_orange"
         app:layout_constraintStart_toStartOf="@+id/guideline"
         app:layout_constraintTop_toTopOf="@+id/guideline2" />
 
@@ -27,7 +26,7 @@
         android:id="@+id/imageButtonRouge"
         android:layout_width="163dp"
         android:layout_height="155dp"
-        android:background="@drawable/image_Btn_rouge"
+        android:background="@drawable/image_btn_rouge"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintStart_toStartOf="@+id/guideline" />
 
@@ -36,9 +35,20 @@
         android:layout_width="163dp"
         android:layout_height="155dp"
         android:layout_marginEnd="4dp"
-        android:background="@drawable/image_Btn_vert"
+        android:background="@drawable/image_btn_vert"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline" />
+
+    <ImageButton
+        android:id="@+id/imageBlanc"
+        android:layout_width="1dp"
+        android:layout_height="1dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/blanc"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline" />
+
+
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline2"

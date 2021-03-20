@@ -12,6 +12,26 @@ import java.util.Random;
 
 public class MainActivity extends AppCompatActivity {
 
+    public int vie = 2;
+    int maxBlocEclaires = 3;
+    int nombreAleatoire;
+
+    ImageButton tmpBoutonVert, tmpBoutonRouge, tmpBoutonOrange, tmpBoutonBleu;
+    ImageButton tmpBouton, tmp2Bouton;
+    ImageButton clickBouton;
+
+    Random random = new Random();
+
+    ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
+
+
+    ImageButton[] stockBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
+    ImageButton[] tabBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
+
+
+
+
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -23,6 +43,7 @@ public class MainActivity extends AppCompatActivity {
         ImageButton boutonRouge = (ImageButton) findViewById(R.id.imageButtonRouge);
         ImageButton boutonOrange = (ImageButton) findViewById(R.id.imageButtonOrange);
         ImageButton boutonBleu = (ImageButton) findViewById(R.id.imageButtonBleu);
+        ImageButton tmpBouton = (ImageButton) findViewById(R.id.imageBlanc);
 
         ImageButton[] tabBoutons = {
                 boutonVert,
@@ -31,63 +52,59 @@ public class MainActivity extends AppCompatActivity {
                 boutonBleu
         };
 
-        // Quand le jeu commence:
+        Jeu();
+        
+    }
 
-        int maxBlocEclaires = 11; //selon le mode donc a changer
+    public void Jeu() {
 
+        while ((vie > 0) && (maxBlocEclaires < 11)) {
 
-        //Mode facile:
-
-        for(int i=1;i<11;i++)
-        {
-            boolean bool = true;
-            Random random = new Random();
-            int nombreAleatoire;
-            ImageButton tmpBouton;
-            int vie = 2;
-            int[] tabSequence = { // idée: stocké les boutons différents de boutons aléatoire
-
-            };
-
-            nombreAleatoire =  random.nextInt(3);
-
-            tmpBouton = tabBoutons[nombreAleatoire];
-            tmpBouton.getBackground().setAlpha(128);
-
-            // si la séquence est reproduite (onClick), alors on fait rien = itération suivante
-            // sinon meme itération et vie = vie - 1
-
-
-            //  PROBLEME ICI:
-
-            if ()
-            //si clic bon bouton
+            for (int i = 0; i < maxBlocEclaires; i++) // Création de la séquence de couleur aléatoire
             {
-                tmpBouton.setOnClickListener(
-                        (view) -> {reactionAuClickBoutonAleatoire();}
-                );
+
+                Toast.makeText(this, "Je rentre dans le for ", Toast.LENGTH_LONG).show();
+
+                nombreAleatoire = random.nextInt(3);
+
+                stockBoutons[i] = tabBoutons[nombreAleatoire]; //On stocke le bouton a chaque itération.
+
+                tmpBouton = tabBoutons[nombreAleatoire]; //On éclaire un bouton a chaque itération.
+                tmpBouton.getBackground().mutate().setAlpha(80); //erreur ici "reference sur objet null"
+                try {
+                    Thread.sleep(1500);
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+                tmpBouton.getBackground().mutate().setAlpha(255);
+
 
             }
 
-            else { // si clic mauvais bvouton
-                vie = vie - 1;
+            for (int i = 1; i < maxBlocEclaires; i++) // Utilisateur / Joueur
+            {
+                tmp2Bouton = stockBoutons[i]; // On stocke le i-ième block éclairé
 
-                if (vie == 0) {
-                    i = maxBlocEclaires;
-                    Toast.makeText(this, "Vous avez perdu", Toast.LENGTH_LONG).show();
-
-                }
-
-                else
-
-                    Toast.makeText(this, "Vous avez perdu une vie", Toast.LENGTH_LONG).show();
+                boutonVert.setOnClickListener(
+                        (view) -> {
+                            reactionAuClickBoutonVertParUtilisateur();
+                        }
+                );
             }
         }
     }
 
-    private void reactionAuClickBoutonAleatoire() {
-        Toast.makeText(this, "OK, séquence correcte", Toast.LENGTH_LONG).show();
+    private void reactionAuClickBoutonVertParUtilisateur() {
+        Toast.makeText(this, "Vert", Toast.LENGTH_LONG).show();
+
+        if(boutonVert == tmp2Bouton)
+        {
+            maxBlocEclaires += 1;
+
+        }
+        else
+            vie -= 1;
+
 
     }
-
 }
