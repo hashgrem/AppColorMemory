@@ -3,20 +3,30 @@ package com.example.appcolormemory;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.graphics.Color;
 import android.os.Bundle;
+import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.Toast;
 
 import java.util.Random;
+import java.util.Timer;
+import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
     public int vie = 2;
     int maxBlocEclaires = 3;
     int nombreAleatoire;
+    int nbBloc=4;
+    private int nbBlocSequence;
+    private Timer timer;
+    private TimerTask timerTask;
+    private int[] tabStock;
+    private  int compteur;
 
-    ImageButton tmpBoutonVert, tmpBoutonRouge, tmpBoutonOrange, tmpBoutonBleu;
+    ImageButton BoutonVert, BoutonRouge, BoutonOrange, BoutonBleu;
     ImageButton tmpBouton, tmp2Bouton;
     ImageButton clickBouton;
 
@@ -28,7 +38,7 @@ public class MainActivity extends AppCompatActivity {
     ImageButton[] stockBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
     ImageButton[] tabBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
 
-
+    int[] test;
 
 
 
@@ -37,13 +47,20 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
+        Toast.makeText(getBaseContext(), "Reason can not be blank", Toast.LENGTH_SHORT).show();
 
 
-        ImageButton boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
-        ImageButton boutonRouge = (ImageButton) findViewById(R.id.imageButtonRouge);
-        ImageButton boutonOrange = (ImageButton) findViewById(R.id.imageButtonOrange);
-        ImageButton boutonBleu = (ImageButton) findViewById(R.id.imageButtonBleu);
-        ImageButton tmpBouton = (ImageButton) findViewById(R.id.imageBlanc);
+        tabStock = new int[]{};
+
+        compteur= 0;
+        nbBlocSequence = 1;
+
+
+         boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
+         boutonRouge = (ImageButton) findViewById(R.id.imageButtonRouge);
+         boutonOrange = (ImageButton) findViewById(R.id.imageButtonOrange);
+         boutonBleu = (ImageButton) findViewById(R.id.imageButtonBleu);
+         tmpBouton = (ImageButton) findViewById(R.id.imageBlanc);
 
         ImageButton[] tabBoutons = {
                 boutonVert,
@@ -52,59 +69,169 @@ public class MainActivity extends AppCompatActivity {
                 boutonBleu
         };
 
-        Jeu();
-        
-    }
+         test = new int[]{
+                 boutonVert.getId()
+         };
 
-    public void Jeu() {
+         timer = new Timer();
 
-        while ((vie > 0) && (maxBlocEclaires < 11)) {
+        try {
+            CreationSequence(nbBloc);
+        } catch (InterruptedException e) {
+            e.printStackTrace();
+        }
 
-            for (int i = 0; i < maxBlocEclaires; i++) // Création de la séquence de couleur aléatoire
-            {
+        boutonVert.setOnClickListener(new View.OnClickListener() {
+             @Override
+             public void onClick(View v) {
+                 try {
+                     Verif(boutonVert.getId());
+                 } catch (InterruptedException e) {
+                     e.printStackTrace();
+                 }
 
-                Toast.makeText(this, "Je rentre dans le for ", Toast.LENGTH_LONG).show();
+             }
+         });
 
-                nombreAleatoire = random.nextInt(3);
-
-                stockBoutons[i] = tabBoutons[nombreAleatoire]; //On stocke le bouton a chaque itération.
-
-                tmpBouton = tabBoutons[nombreAleatoire]; //On éclaire un bouton a chaque itération.
-                tmpBouton.getBackground().mutate().setAlpha(80); //erreur ici "reference sur objet null"
+        boutonRouge.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Toast.makeText(getApplicationContext(), "TEST", Toast.LENGTH_LONG).show();
                 try {
-                    Thread.sleep(1500);
+                    Verif(boutonRouge.getId());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
-                tmpBouton.getBackground().mutate().setAlpha(255);
-
 
             }
+        });
 
-            for (int i = 1; i < maxBlocEclaires; i++) // Utilisateur / Joueur
-            {
-                tmp2Bouton = stockBoutons[i]; // On stocke le i-ième block éclairé
+        boutonOrange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonOrange.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-                boutonVert.setOnClickListener(
-                        (view) -> {
-                            reactionAuClickBoutonVertParUtilisateur();
-                        }
-                );
             }
-        }
+        });
+
+        boutonBleu.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonBleu.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
-    private void reactionAuClickBoutonVertParUtilisateur() {
-        Toast.makeText(this, "Vert", Toast.LENGTH_LONG).show();
 
-        if(boutonVert == tmp2Bouton)
+    public void Verif(int idBoutonClicke) throws InterruptedException {
+
+        //Comparer avec l'ID du bouton aléatoire
+
+
+        if(tabStock[compteur] == idBoutonClicke)
         {
-            maxBlocEclaires += 1;
+
+            Toast.makeText(getApplicationContext(), "Correcte", Toast.LENGTH_LONG).show();
+            compteur++;
+            nbBlocSequence++;
+            tabStock[nbBlocSequence] = RandomID();
+
+            for (int i=0 ; i<nbBlocSequence ; i++)
+            {
+                try {
+                    EclaireBloc(tabStock[i]);
+
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
 
         }
         else
-            vie -= 1;
+        {
+            vie--;
+            Toast.makeText(getApplicationContext(), "Incorrecte", Toast.LENGTH_LONG).show();
+            for (int i=0 ; i<nbBlocSequence ; i++)
+            {
+                try {
+                    EclaireBloc(tabStock[i]);
 
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+
+        }
 
     }
+
+    public int RandomID()
+    {
+        int[] tabID= new int[nbBloc];
+
+        tabID[0] = boutonVert.getId(); //faire les autres
+        tabID[1] = boutonBleu.getId();
+        tabID[2] = boutonOrange.getId();
+        tabID[3] = boutonRouge.getId();
+
+        nombreAleatoire = random.nextInt(tabID.length);
+
+        return tabID[nombreAleatoire];
+
+
+        //Parcourir tableau test et return un id aléatoire
+    }
+
+    public void  CreationSequence(int nbBloc) throws InterruptedException {
+        int[] tabSequence = new int[nbBloc];
+
+        timerTask = new TimerTask() {
+            @Override
+            public void run() {
+
+                for (int i=0 ; i<nbBlocSequence ; i++)
+                {
+                    tabSequence[i] = RandomID();
+
+                    // Stuff that updates the UI
+                    try {
+                        EclaireBloc(tabSequence[i]);
+
+                    } catch (InterruptedException e) {
+                        e.printStackTrace();
+                    }
+                }
+            }
+
+        };
+
+        timer.schedule(timerTask, 2000);
+
+        tabStock = tabSequence;
+
+        //return tabSequence;
+
+    }
+
+    public void EclaireBloc(int id) throws InterruptedException {
+
+
+        ImageButton boutonEclaire = findViewById(id);
+        boutonEclaire.getBackground().mutate().setAlpha(80);
+        Thread.sleep(400);
+        boutonEclaire.getBackground().mutate().setAlpha(255);
+        Thread.sleep(1000);
+
+    }
+
+
 }
