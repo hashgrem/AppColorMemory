@@ -8,7 +8,7 @@
 
 
     <Button
-        android:id="@+id/id_btn_jouer"
+        android:id="@+id/btn_jouer"
         android:layout_width="400dp"
         android:layout_height="84dp"
         android:layout_marginTop="28dp"
@@ -19,13 +19,13 @@
         app:layout_constraintTop_toBottomOf="@+id/id_nom_utilisateur" />
 
     <Button
-        android:id="@+id/id_btn_info_utilisateur"
+        android:id="@+id/btn_profil"
         android:layout_width="400dp"
         android:layout_height="84dp"
         android:text="Profil"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/id_btn_jouer" />
+        app:layout_constraintTop_toBottomOf="@+id/btn_jouer" />
 
     <ImageView
         android:id="@+id/logo_image"
