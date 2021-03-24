@@ -16,10 +16,10 @@ import java.util.TimerTask;
 
 public class MainActivity extends AppCompatActivity {
 
-    public int vie = 2;
-    int maxBlocEclaires = 3;
-    int nombreAleatoire;
-    int nbBloc=4;
+    public int vie;
+    private int maxBlocEclaires;
+    private int nombreAleatoire;
+    private int nbBloc;
     private int nbBlocSequence;
     private Timer timer;
     private TimerTask timerTask;
@@ -54,6 +54,9 @@ public class MainActivity extends AppCompatActivity {
 
         compteur= 0;
         nbBlocSequence = 1;
+        vie = 2;
+        maxBlocEclaires = 3;
+        nbBloc=4;
 
 
          boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
