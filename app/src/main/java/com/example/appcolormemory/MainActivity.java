@@ -4,6 +4,7 @@ package com.example.appcolormemory;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
+import android.content.Intent;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
@@ -194,6 +195,9 @@ public class MainActivity extends AppCompatActivity {
             if(vie == 0){
                 premiereVie.getBackground().mutate().setAlpha(0);
                 Toast.makeText(getApplicationContext(), "Perdu", Toast.LENGTH_SHORT).show();
+                Thread.sleep(2000);
+                Intent recommencer = new Intent(MainActivity.this, RecommencerNiveau.class);
+                startActivity(recommencer);
                 //page échec : demander de recommencer
             }
             else{
