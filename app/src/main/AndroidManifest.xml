@@ -9,15 +9,17 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/Theme.AppColorMemory">
-        <activity android:name=".NiveauChrono"></activity>
+        <activity android:name=".Connexion"></activity>
+        <activity android:name=".Inscription" />
+        <activity android:name=".NiveauChrono" />
         <activity android:name=".NiveauExpert" />
         <activity android:name=".NiveauDifficile" />
         <activity android:name=".ChoixNiveau" />
         <activity android:name=".MainActivity" />
         <activity android:name=".RecommencerNiveau" />
-        <activity android:name=".Profil"></activity>
-
-        <activity android:name=".MainMenu">
+        <activity android:name=".Profil" />
+        <activity android:name=".MainMenu" />
+        <activity android:name=".DemarrageApp">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
 

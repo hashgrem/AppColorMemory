@@ -176,7 +176,7 @@ public class MainActivity extends AppCompatActivity {
             }
             else
             {
-                Toast.makeText(getApplicationContext(), "bloc de séquence correcte", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "bloc de séquence correct", Toast.LENGTH_SHORT).show();
                 compteur++;
             }
 
@@ -187,7 +187,7 @@ public class MainActivity extends AppCompatActivity {
             compteur=0;
             vie--;
 
-            Toast.makeText(getApplicationContext(), "Incorrecte", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Incorrect", Toast.LENGTH_SHORT).show();
 
 
             timer = new Timer();
