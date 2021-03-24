@@ -1,5 +1,6 @@
 package com.example.appcolormemory;
 
+
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.annotation.SuppressLint;
@@ -8,6 +9,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
+import android.widget.ImageView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -30,6 +32,8 @@ public class MainActivity extends AppCompatActivity {
     ImageButton tmpBouton, tmp2Bouton;
     ImageButton clickBouton;
 
+    ImageButton premiereVie, deuxiemeVie;
+
     Random random = new Random();
 
     ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
@@ -47,7 +51,6 @@ public class MainActivity extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        Toast.makeText(getBaseContext(), "Reason can not be blank", Toast.LENGTH_SHORT).show();
 
 
         tabStock = new int[]{};
@@ -55,15 +58,18 @@ public class MainActivity extends AppCompatActivity {
         compteur= 0;
         nbBlocSequence = 1;
         vie = 2;
-        maxBlocEclaires = 3;
+        maxBlocEclaires = 10;
         nbBloc=4;
 
 
-         boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
-         boutonRouge = (ImageButton) findViewById(R.id.imageButtonRouge);
-         boutonOrange = (ImageButton) findViewById(R.id.imageButtonOrange);
-         boutonBleu = (ImageButton) findViewById(R.id.imageButtonBleu);
-         tmpBouton = (ImageButton) findViewById(R.id.imageBlanc);
+        boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
+        boutonRouge = (ImageButton) findViewById(R.id.imageButtonRouge);
+        boutonOrange = (ImageButton) findViewById(R.id.imageButtonOrange);
+        boutonBleu = (ImageButton) findViewById(R.id.imageButtonBleu);
+
+        premiereVie = (ImageButton) findViewById(R.id.vie_1);
+        deuxiemeVie = (ImageButton) findViewById(R.id.vie_2);
+
 
         ImageButton[] tabBoutons = {
                 boutonVert,
@@ -72,34 +78,32 @@ public class MainActivity extends AppCompatActivity {
                 boutonBleu
         };
 
-         test = new int[]{
-                 boutonVert.getId()
-         };
+        test = new int[]{
+                boutonVert.getId()
+        };
 
-         timer = new Timer();
 
         try {
-            CreationSequence(nbBloc);
+            CreationSequence(maxBlocEclaires);
         } catch (InterruptedException e) {
             e.printStackTrace();
         }
 
         boutonVert.setOnClickListener(new View.OnClickListener() {
-             @Override
-             public void onClick(View v) {
-                 try {
-                     Verif(boutonVert.getId());
-                 } catch (InterruptedException e) {
-                     e.printStackTrace();
-                 }
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonVert.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
 
-             }
-         });
+            }
+        });
 
         boutonRouge.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Toast.makeText(getApplicationContext(), "TEST", Toast.LENGTH_LONG).show();
                 try {
                     Verif(boutonRouge.getId());
                 } catch (InterruptedException e) {
@@ -142,46 +146,84 @@ public class MainActivity extends AppCompatActivity {
 
         if(tabStock[compteur] == idBoutonClicke)
         {
+            if(compteur+1 == nbBlocSequence){
 
-            Toast.makeText(getApplicationContext(), "Correcte", Toast.LENGTH_LONG).show();
-            compteur++;
-            nbBlocSequence++;
-            tabStock[nbBlocSequence] = RandomID();
+                Toast.makeText(getApplicationContext(), "Séquence terminée", Toast.LENGTH_SHORT).show();
 
-            for (int i=0 ; i<nbBlocSequence ; i++)
+                compteur = 0;
+                timer = new Timer();
+                tabStock[nbBlocSequence] = RandomID();
+                timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+
+                        for (int i=0 ; i<nbBlocSequence ; i++)
+                        {
+                            // Stuff that updates the UI
+                            try {
+                                EclaireBloc(tabStock[i]);
+
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                };
+                timer.schedule(timerTask, 2000);
+                nbBlocSequence++;
+            }
+            else
             {
-                try {
-                    EclaireBloc(tabStock[i]);
-
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+                Toast.makeText(getApplicationContext(), "bloc de séquence correcte", Toast.LENGTH_SHORT).show();
+                compteur++;
             }
 
         }
         else
         {
+            deuxiemeVie.getBackground().mutate().setAlpha(0);
+            compteur=0;
             vie--;
-            Toast.makeText(getApplicationContext(), "Incorrecte", Toast.LENGTH_LONG).show();
-            for (int i=0 ; i<nbBlocSequence ; i++)
-            {
-                try {
-                    EclaireBloc(tabStock[i]);
 
-                } catch (InterruptedException e) {
-                    e.printStackTrace();
-                }
+            Toast.makeText(getApplicationContext(), "Incorrecte", Toast.LENGTH_SHORT).show();
+
+
+            timer = new Timer();
+
+            if(vie == 0){
+                premiereVie.getBackground().mutate().setAlpha(0);
+                Toast.makeText(getApplicationContext(), "Perdu", Toast.LENGTH_SHORT).show();
+                //page échec : demander de recommencer
             }
+            else{
+                timerTask = new TimerTask() {
+                    @Override
+                    public void run() {
+                        for (int i=0 ; i<nbBlocSequence ; i++)
+                        {
+                            try {
+                                EclaireBloc(tabStock[i]);
 
+                            } catch (InterruptedException e) {
+                                e.printStackTrace();
+                            }
+                        }
+                    }
+
+                };
+
+                timer.schedule(timerTask, 2000);
+
+            }
         }
-
     }
 
     public int RandomID()
     {
         int[] tabID= new int[nbBloc];
 
-        tabID[0] = boutonVert.getId(); //faire les autres
+        tabID[0] = boutonVert.getId();
         tabID[1] = boutonBleu.getId();
         tabID[2] = boutonOrange.getId();
         tabID[3] = boutonRouge.getId();
@@ -190,12 +232,12 @@ public class MainActivity extends AppCompatActivity {
 
         return tabID[nombreAleatoire];
 
-
-        //Parcourir tableau test et return un id aléatoire
     }
 
-    public void  CreationSequence(int nbBloc) throws InterruptedException {
-        int[] tabSequence = new int[nbBloc];
+    public void  CreationSequence(int nb_bloc_max) throws InterruptedException {
+        timer = new Timer();
+
+        int[] tabSequence = new int[nb_bloc_max];
 
         timerTask = new TimerTask() {
             @Override
@@ -205,7 +247,6 @@ public class MainActivity extends AppCompatActivity {
                 {
                     tabSequence[i] = RandomID();
 
-                    // Stuff that updates the UI
                     try {
                         EclaireBloc(tabSequence[i]);
 
@@ -218,15 +259,12 @@ public class MainActivity extends AppCompatActivity {
         };
 
         timer.schedule(timerTask, 2000);
-
         tabStock = tabSequence;
 
-        //return tabSequence;
 
     }
 
     public void EclaireBloc(int id) throws InterruptedException {
-
 
         ImageButton boutonEclaire = findViewById(id);
         boutonEclaire.getBackground().mutate().setAlpha(80);

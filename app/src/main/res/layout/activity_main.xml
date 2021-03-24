@@ -5,6 +5,54 @@
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".MainActivity">
+
+    <TextView
+        android:id="@+id/msg_difficulte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Color Memory     Niveau Facile"
+        android:textColor="#0B4481"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/msg_vie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="19dp"
+        android:gravity="center"
+        android:text="Vies restantes:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonVert"
+        app:layout_constraintEnd_toStartOf="@+id/vie_2"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <ImageButton
+        android:id="@+id/vie_1"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        android:layout_gravity="center"
+        android:background="@drawable/vie"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonRouge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte" />
+
+    <ImageButton
+        android:id="@+id/vie_2"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:background="@drawable/vie"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonRouge"
+        app:layout_constraintEnd_toStartOf="@+id/vie_1"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte" />
+
     <ImageButton
         android:id="@+id/imageButtonBleu"
         android:layout_width="163dp"
@@ -38,16 +86,6 @@
         android:background="@drawable/image_btn_vert"
         app:layout_constraintBottom_toTopOf="@+id/guideline2"
         app:layout_constraintEnd_toStartOf="@+id/guideline" />
-
-    <ImageButton
-        android:id="@+id/imageBlanc"
-        android:layout_width="1dp"
-        android:layout_height="1dp"
-        android:layout_marginEnd="4dp"
-        android:background="@drawable/blanc"
-        app:layout_constraintBottom_toTopOf="@+id/guideline2"
-        app:layout_constraintEnd_toStartOf="@+id/guideline" />
-
 
 
     <androidx.constraintlayout.widget.Guideline
