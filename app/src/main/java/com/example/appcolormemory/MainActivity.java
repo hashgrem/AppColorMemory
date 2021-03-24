@@ -198,6 +198,7 @@ public class MainActivity extends AppCompatActivity {
                 Thread.sleep(2000);
                 Intent recommencer = new Intent(MainActivity.this, RecommencerNiveau.class);
                 startActivity(recommencer);
+                Thread.sleep(2000);
                 //page échec : demander de recommencer
             }
             else{
