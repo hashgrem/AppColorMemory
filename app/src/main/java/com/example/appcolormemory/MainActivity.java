@@ -199,7 +199,7 @@ public class MainActivity extends AppCompatActivity {
                 Intent recommencer = new Intent(MainActivity.this, RecommencerNiveau.class);
                 startActivity(recommencer);
                 Thread.sleep(2000);
-                //page échec : demander de recommencer
+
             }
             else{
                 timerTask = new TimerTask() {
@@ -278,6 +278,5 @@ public class MainActivity extends AppCompatActivity {
         Thread.sleep(1000);
 
     }
-
 
 }

@@ -9,7 +9,7 @@ public class DatabaseAccess {
     private DatabaseOpenHelper openHelper;
     private SQLiteDatabase db;
     private static DatabaseAccess instance;
-    Cursor c = null;
+    Cursor c = null;/*
 
     private DatabaseAccess(Context context) {
         this.openHelper = new DatabaseOpenHelper(context);
@@ -71,6 +71,6 @@ public class DatabaseAccess {
         c = db.rawQuery("INSERT INTO users (birthDate) values (?)", new String[]{birthDateUser});
         c.moveToFirst();
         return c.getString(4);
-    }
+    }*/
 }
 

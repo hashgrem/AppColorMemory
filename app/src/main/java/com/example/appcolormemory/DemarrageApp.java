@@ -26,8 +26,6 @@ public class DemarrageApp extends AppCompatActivity {
             public void onClick(View v) {
                 Intent inscription_page = new Intent(getApplicationContext(), Inscription.class);
                 startActivity(inscription_page);
-
-
             }
         });
 
@@ -36,7 +34,6 @@ public class DemarrageApp extends AppCompatActivity {
             public void onClick(View v) {
                 Intent connexion_page = new Intent(getApplicationContext(), Connexion.class);
                 startActivity(connexion_page);
-
             }
         });
 
