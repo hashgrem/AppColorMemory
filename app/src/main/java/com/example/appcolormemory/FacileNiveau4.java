@@ -1,23 +1,19 @@
 package com.example.appcolormemory;
 
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class FacileNiveau4 extends AppCompatActivity {
 
     public int vie;
     private int maxBlocEclaires;
@@ -29,30 +25,15 @@ public class MainActivity extends AppCompatActivity {
     private int[] tabStock;
     private  int compteur;
 
-    ImageButton BoutonVert, BoutonRouge, BoutonOrange, BoutonBleu;
-    ImageButton tmpBouton, tmp2Bouton;
-    ImageButton clickBouton;
-
+    ImageButton boutonVert, boutonRouge, boutonJaune, boutonBleu, boutonRose, boutonViolet, boutonOrange;
     ImageButton premiereVie, deuxiemeVie;
 
     Random random = new Random();
 
-    ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
-
-
-    ImageButton[] stockBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
-    ImageButton[] tabBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
-
-    int[] test;
-
-
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
-
+        setContentView(R.layout.layout_facile_niveau_4);
 
         tabStock = new int[]{};
 
@@ -60,29 +41,29 @@ public class MainActivity extends AppCompatActivity {
         nbBlocSequence = 1;
         vie = 2;
         maxBlocEclaires = 10;
-        nbBloc=4;
+        nbBloc=7;
 
 
-        boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
-        boutonRouge = (ImageButton) findViewById(R.id.imageButtonRouge);
-        boutonOrange = (ImageButton) findViewById(R.id.imageButtonOrange);
-        boutonBleu = (ImageButton) findViewById(R.id.imageButtonBleu);
+        boutonVert  = (ImageButton) findViewById(R.id.btn_vert);
+        boutonRouge = (ImageButton) findViewById(R.id.btn_rouge);
+        boutonJaune = (ImageButton) findViewById(R.id.btn_jaune);
+        boutonBleu = (ImageButton) findViewById(R.id.btn_bleu);
+        boutonRose = (ImageButton) findViewById(R.id.btn_rose);
+        boutonViolet = (ImageButton) findViewById(R.id.btn_violet);
+        boutonOrange = (ImageButton) findViewById(R.id.btn_orange);
 
         premiereVie = (ImageButton) findViewById(R.id.vie_1);
         deuxiemeVie = (ImageButton) findViewById(R.id.vie_2);
 
-
         ImageButton[] tabBoutons = {
                 boutonVert,
                 boutonRouge,
-                boutonOrange,
-                boutonBleu
+                boutonJaune,
+                boutonBleu,
+                boutonRose,
+                boutonViolet,
+                boutonOrange
         };
-
-        test = new int[]{
-                boutonVert.getId()
-        };
-
 
         try {
             CreationSequence(maxBlocEclaires);
@@ -114,11 +95,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        boutonOrange.setOnClickListener(new View.OnClickListener() {
+        boutonRose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Verif(boutonOrange.getId());
+                    Verif(boutonRose.getId());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -137,8 +118,40 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-    }
+        boutonJaune.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonJaune.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
 
+        boutonViolet.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonViolet.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        boutonOrange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonOrange.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+    }
 
     public void Verif(int idBoutonClicke) throws InterruptedException {
 
@@ -174,12 +187,12 @@ public class MainActivity extends AppCompatActivity {
                 timer.schedule(timerTask, 2000);
                 nbBlocSequence++;
 
-                if(nbBlocSequence == maxBlocEclaires)
+                /*if(nbBlocSequence == maxBlocEclaires)
                 {
                     Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
                     Intent niveauSuivant = new Intent(MainActivity.this, FacileNiveau2.class);
                     startActivity(niveauSuivant);
-                }
+                }*/// envoyer lvl 3
 
             }
             else
@@ -204,10 +217,7 @@ public class MainActivity extends AppCompatActivity {
                 premiereVie.getBackground().mutate().setAlpha(0);
                 Toast.makeText(getApplicationContext(), "Perdu", Toast.LENGTH_SHORT).show();
                 Thread.sleep(2000);
-                Intent recommencer = new Intent(MainActivity.this, RecommencerNiveau.class);
-                startActivity(recommencer);
-                Thread.sleep(2000);
-                //page échec : demander de recommencer
+
             }
             else{
                 timerTask = new TimerTask() {
@@ -238,9 +248,11 @@ public class MainActivity extends AppCompatActivity {
 
         tabID[0] = boutonVert.getId();
         tabID[1] = boutonBleu.getId();
-        tabID[2] = boutonOrange.getId();
+        tabID[2] = boutonJaune.getId();
         tabID[3] = boutonRouge.getId();
-
+        tabID[4] = boutonRose.getId();
+        tabID[5] = boutonViolet.getId();
+        tabID[6] = boutonOrange.getId();
         nombreAleatoire = random.nextInt(tabID.length);
 
         return tabID[nombreAleatoire];
@@ -286,6 +298,7 @@ public class MainActivity extends AppCompatActivity {
         Thread.sleep(1000);
 
     }
+
 
 
 }
