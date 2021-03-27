@@ -1,6 +1,7 @@
 package com.example.appcolormemory;
 
 import android.content.Intent;
+import android.media.Image;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
@@ -13,7 +14,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class FacileNiveau3 extends AppCompatActivity {
+public class FacileNiveau6 extends AppCompatActivity {
 
     public int vie;
     private int maxBlocEclaires;
@@ -25,7 +26,7 @@ public class FacileNiveau3 extends AppCompatActivity {
     private int[] tabStock;
     private  int compteur;
 
-    ImageButton boutonVert, boutonRouge, boutonJaune, boutonBleu, boutonRose, boutonViolet;
+    ImageButton boutonVert, boutonRouge, boutonJaune, boutonBleu, boutonRose, boutonViolet, boutonOrange, boutonMarron, boutonLavande;
     ImageButton premiereVie, deuxiemeVie;
 
     Random random = new Random();
@@ -33,7 +34,7 @@ public class FacileNiveau3 extends AppCompatActivity {
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.layout_facile_niveau_3);
+        setContentView(R.layout.layout_facile_niveau_6);
 
         tabStock = new int[]{};
 
@@ -41,7 +42,7 @@ public class FacileNiveau3 extends AppCompatActivity {
         nbBlocSequence = 1;
         vie = 2;
         maxBlocEclaires = 10;
-        nbBloc=6;
+        nbBloc=9;
 
 
         boutonVert  = (ImageButton) findViewById(R.id.btn_vert);
@@ -50,6 +51,9 @@ public class FacileNiveau3 extends AppCompatActivity {
         boutonBleu = (ImageButton) findViewById(R.id.btn_bleu);
         boutonRose = (ImageButton) findViewById(R.id.btn_rose);
         boutonViolet = (ImageButton) findViewById(R.id.btn_violet);
+        boutonOrange = (ImageButton) findViewById(R.id.btn_orange);
+        boutonMarron = (ImageButton) findViewById(R.id.btn_marron);
+        boutonLavande = (ImageButton) findViewById(R.id.btn_lavande);
 
         premiereVie = (ImageButton) findViewById(R.id.vie_1);
         deuxiemeVie = (ImageButton) findViewById(R.id.vie_2);
@@ -60,7 +64,10 @@ public class FacileNiveau3 extends AppCompatActivity {
                 boutonJaune,
                 boutonBleu,
                 boutonRose,
-                boutonViolet
+                boutonViolet,
+                boutonOrange,
+                boutonMarron,
+                boutonLavande
         };
 
         try {
@@ -138,6 +145,41 @@ public class FacileNiveau3 extends AppCompatActivity {
             }
         });
 
+        boutonOrange.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonOrange.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
+        boutonMarron.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonMarron.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
+        boutonLavande.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonLavande.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+
+            }
+        });
+
     }
 
     public void Verif(int idBoutonClicke) throws InterruptedException {
@@ -177,7 +219,7 @@ public class FacileNiveau3 extends AppCompatActivity {
                 if(nbBlocSequence == maxBlocEclaires)
                 {
                     Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
-                    Intent niveauSuivant = new Intent(FacileNiveau3.this, FacileNiveau4.class);
+                    Intent niveauSuivant = new Intent(FacileNiveau6.this, FacileNiveau7.class);
                     startActivity(niveauSuivant);
                 }
 
@@ -204,7 +246,7 @@ public class FacileNiveau3 extends AppCompatActivity {
                 premiereVie.getBackground().mutate().setAlpha(0);
                 Toast.makeText(getApplicationContext(), "Perdu", Toast.LENGTH_SHORT).show();
                 Thread.sleep(2000);
-                Intent recommencer = new Intent(FacileNiveau3.this, RecommencerNiveau.class);
+                Intent recommencer = new Intent(FacileNiveau6.this, RecommencerNiveau.class);
                 startActivity(recommencer);
 
             }
@@ -241,6 +283,9 @@ public class FacileNiveau3 extends AppCompatActivity {
         tabID[3] = boutonRouge.getId();
         tabID[4] = boutonRose.getId();
         tabID[5] = boutonViolet.getId();
+        tabID[6] = boutonOrange.getId();
+        tabID[7] = boutonMarron.getId();
+        tabID[8] = boutonLavande.getId();
         nombreAleatoire = random.nextInt(tabID.length);
 
         return tabID[nombreAleatoire];

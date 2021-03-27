@@ -201,12 +201,12 @@ public class FacileNiveau5 extends AppCompatActivity {
                 timer.schedule(timerTask, 2000);
                 nbBlocSequence++;
 
-                /*if(nbBlocSequence == maxBlocEclaires)
+                if(nbBlocSequence == maxBlocEclaires)
                 {
                     Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
-                    Intent niveauSuivant = new Intent(MainActivity.this, FacileNiveau2.class);
+                    Intent niveauSuivant = new Intent(FacileNiveau5.this, FacileNiveau6.class);
                     startActivity(niveauSuivant);
-                }*/// envoyer lvl 3
+                }
 
             }
             else
@@ -231,6 +231,8 @@ public class FacileNiveau5 extends AppCompatActivity {
                 premiereVie.getBackground().mutate().setAlpha(0);
                 Toast.makeText(getApplicationContext(), "Perdu", Toast.LENGTH_SHORT).show();
                 Thread.sleep(2000);
+                Intent recommencer = new Intent(FacileNiveau5.this, RecommencerNiveau.class);
+                startActivity(recommencer);
 
             }
             else{
