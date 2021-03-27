@@ -176,12 +176,12 @@ public class ExpertNiveau3 extends AppCompatActivity {
                 timer.schedule(timerTask, 2000);
                 nbBlocSequence++;
 
-               /* if(nbBlocSequence == maxBlocEclaires)
+                if(nbBlocSequence == maxBlocEclaires)
                 {
                     Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
-                    Intent niveauSuivant = new Intent(FacileNiveau3.this, FacileNiveau4.class);
+                    Intent niveauSuivant = new Intent(ExpertNiveau3.this, ExpertNiveau4.class);
                     startActivity(niveauSuivant);
-                } */
+                }
 
             }
             else
