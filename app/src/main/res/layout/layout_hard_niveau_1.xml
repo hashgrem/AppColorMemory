@@ -1,0 +1,104 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".HardNiveau1">
+
+    <TextView
+        android:id="@+id/msg_difficulte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Color Memory     Niveau Difficile"
+        android:textColor="#0B4481"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/msg_vie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginEnd="19dp"
+        android:gravity="center"
+        android:text="Vies restantes:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonVert"
+        app:layout_constraintEnd_toStartOf="@+id/vie_2"
+        app:layout_constraintHorizontal_bias="0.375"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <ImageButton
+        android:id="@+id/vie_1"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        android:layout_gravity="center"
+        android:background="@drawable/vie"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonRouge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte" />
+
+    <ImageButton
+        android:id="@+id/vie_2"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:background="@drawable/vie"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonRouge"
+        app:layout_constraintEnd_toStartOf="@+id/vie_1"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte" />
+
+    <ImageButton
+        android:id="@+id/imageButtonBleu"
+        android:layout_width="163dp"
+        android:layout_height="155dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/image_btn_bleu"
+        app:layout_constraintEnd_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <ImageButton
+        android:id="@+id/imageButtonOrange"
+        android:layout_width="163dp"
+        android:layout_height="155dp"
+        android:background="@drawable/image_btn_orange"
+        app:layout_constraintStart_toStartOf="@+id/guideline"
+        app:layout_constraintTop_toTopOf="@+id/guideline2" />
+
+    <ImageButton
+        android:id="@+id/imageButtonRouge"
+        android:layout_width="163dp"
+        android:layout_height="155dp"
+        android:background="@drawable/image_btn_rouge"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintStart_toStartOf="@+id/guideline" />
+
+    <ImageButton
+        android:id="@+id/imageButtonVert"
+        android:layout_width="163dp"
+        android:layout_height="155dp"
+        android:layout_marginEnd="4dp"
+        android:background="@drawable/image_btn_vert"
+        app:layout_constraintBottom_toTopOf="@+id/guideline2"
+        app:layout_constraintEnd_toStartOf="@+id/guideline" />
+
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline2"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="horizontal"
+        app:layout_constraintGuide_begin="473dp" />
+
+    <androidx.constraintlayout.widget.Guideline
+        android:id="@+id/guideline"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        app:layout_constraintGuide_begin="205dp" />
+</androidx.constraintlayout.widget.ConstraintLayout>

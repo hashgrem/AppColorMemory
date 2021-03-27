@@ -39,7 +39,7 @@ public class ChoixNiveau extends AppCompatActivity {
         btn_niveau_difficile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Niveau_Difficle = new Intent(getApplicationContext(), NiveauDifficile.class);
+                Intent Niveau_Difficle = new Intent(getApplicationContext(), HardNiveau1.class);
                 startActivity(Niveau_Difficle);
                 finish();
 

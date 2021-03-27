@@ -20,6 +20,13 @@
         <activity android:name=".FacileNiveau5" />
         <activity android:name=".FacileNiveau6" />
         <activity android:name=".FacileNiveau7" />
+        <activity android:name=".HardNiveau1" />
+        <activity android:name=".HardNiveau2" />
+        <activity android:name=".HardNiveau3" />
+        <activity android:name=".HardNiveau4" />
+        <activity android:name=".HardNiveau5" />
+        <activity android:name=".HardNiveau6" />
+        <activity android:name=".HardNiveau7" />
         <activity android:name=".RecommencerNiveau" />
         <activity android:name=".Profil"></activity>
 
