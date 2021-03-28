@@ -35,18 +35,18 @@
         android:layout_height="150dp"
         android:layout_gravity="center"
         android:src="@drawable/cercle_couleurs"
-        app:layout_constraintBottom_toTopOf="@+id/msg_main_menu"
+        app:layout_constraintBottom_toTopOf="@+id/main_menu_username_msg"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent" />
 
     <TextView
-        android:id="@+id/msg_main_menu"
+        android:id="@+id/main_menu_username_msg"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginTop="180dp"
         android:gravity="center"
-        android:text="Bonjour          {username}!"
+        android:text="Bonjour"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.496"
@@ -63,6 +63,6 @@
         android:textSize="16dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/msg_main_menu" />
+        app:layout_constraintTop_toBottomOf="@+id/main_menu_username_msg" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

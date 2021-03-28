@@ -6,7 +6,7 @@ import android.content.Context;
 
 public class DatabaseAccess {
 
-    private DatabaseOpenHelper openHelper;
+   // private DatabaseOpenHelper openHelper;
     private SQLiteDatabase db;
     private static DatabaseAccess instance;
     Cursor c = null;/*

@@ -4,11 +4,11 @@
     xmlns:tools="http://schemas.android.com/tools"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    tools:context=".Inscription">
+    tools:context=".Connexion">
 
 
     <ImageView
-        android:id="@+id/inscription_logo_image"
+        android:id="@+id/connexion_logo_image"
         android:layout_width="150dp"
         android:layout_height="150dp"
         android:layout_gravity="center"
@@ -21,46 +21,32 @@
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/inscription_msg_welcome"
+        android:id="@+id/connexion_msg_welcome"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:text="Bienvenue sur ColorMemory !"
         android:textSize="40sp"
         app:layout_constraintEnd_toEndOf="parent"
-
-        app:layout_constraintTop_toBottomOf="@+id/inscription_logo_image"
+        app:layout_constraintTop_toBottomOf="@+id/connexion_logo_image"
         tools:ignore="MissingConstraints" />
 
     <TextView
-        android:id="@+id/inscription_txt"
+        android:id="@+id/connexion_txt"
         android:layout_width="0dp"
         android:layout_height="wrap_content"
         android:gravity="center"
         android:padding="10sp"
-        android:text="Inscrivez vous pour continuer."
+        android:text="Connectez vous pour continuer."
         android:textColor="#0F43FF"
         android:textSize="18sp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inscription_msg_welcome" />
+        app:layout_constraintTop_toBottomOf="@+id/connexion_msg_welcome" />
 
 
     <EditText
-        android:id="@+id/inscription_prenom"
-        android:layout_width="280dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="25dp"
-        android:hint="Prénom"
-        android:padding="10dp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintHorizontal_bias="0.496"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inscription_txt" />
-
-
-    <EditText
-        android:id="@+id/inscription_email"
+        android:id="@+id/connexion_email"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -69,10 +55,10 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inscription_prenom" />
+        app:layout_constraintTop_toBottomOf="@+id/connexion_txt" />
 
     <EditText
-        android:id="@+id/inscription_password"
+        android:id="@+id/connexion_password"
         android:layout_width="280dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="10dp"
@@ -81,20 +67,20 @@
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintHorizontal_bias="0.503"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inscription_email" />
+        app:layout_constraintTop_toBottomOf="@+id/connexion_email" />
 
 
 
     <Button
-        android:id="@+id/inscription_btn_inscription"
+        android:id="@+id/connexion_btn_connexion"
         android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:layout_marginTop="25dp"
         android:background="#0022FF"
-        android:text="S'inscrire"
+        android:text="Se Connecter"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/inscription_password"
+        app:layout_constraintTop_toBottomOf="@+id/connexion_password"
         tools:ignore="MissingConstraints" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>
