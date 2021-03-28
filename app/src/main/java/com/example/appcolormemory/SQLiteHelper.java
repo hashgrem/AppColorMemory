@@ -83,7 +83,7 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
 
             SQLiteDatabase db =this.getReadableDatabase();
-           String sql= "SELECT Score FROM JOUEURS WHERE name ='" +username+ "'";
+            String sql= "SELECT Score FROM JOUEURS WHERE name ='" +username+ "'";
 
             Cursor cursor=db.rawQuery(sql, null);
             cursor.moveToFirst();
@@ -98,14 +98,21 @@ public class SQLiteHelper extends SQLiteOpenHelper{
              String sql= "SELECT name FROM JOUEURS WHERE login ='" +email+ "'";
 
              Cursor cursor=db.rawQuery(sql, null);
-
              cursor.moveToFirst();
 
-
-
-
-
              return cursor.getString(0);
+
+        }
+
+        String recuperation_email(String username) {
+
+            SQLiteDatabase db =this.getReadableDatabase();
+            String sql= "SELECT login FROM JOUEURS WHERE name ='" +username+ "'";
+
+            Cursor cursor=db.rawQuery(sql, null);
+            cursor.moveToFirst();
+
+            return cursor.getString(0);
 
         }
 
