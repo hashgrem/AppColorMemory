@@ -39,7 +39,7 @@ public class ChoixNiveau extends AppCompatActivity {
         btn_niveau_difficile.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Niveau_Difficle = new Intent(getApplicationContext(), NiveauDifficile.class);
+                Intent Niveau_Difficle = new Intent(getApplicationContext(), HardNiveau1.class);
                 startActivity(Niveau_Difficle);
                 finish();
 
@@ -49,7 +49,7 @@ public class ChoixNiveau extends AppCompatActivity {
         btn_niveau_expert.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                Intent Niveau_Expert = new Intent(getApplicationContext(), NiveauExpert.class);
+                Intent Niveau_Expert = new Intent(getApplicationContext(), ExpertNiveau1.class);
                 startActivity(Niveau_Expert);
                 finish();
 
@@ -65,9 +65,6 @@ public class ChoixNiveau extends AppCompatActivity {
 
             }
         });
-
-
-
 
     }
 }

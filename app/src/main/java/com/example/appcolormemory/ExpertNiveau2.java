@@ -1,23 +1,19 @@
 package com.example.appcolormemory;
 
-
-import androidx.appcompat.app.AppCompatActivity;
-
-import android.annotation.SuppressLint;
 import android.content.Intent;
-import android.graphics.Color;
 import android.os.Bundle;
 import android.view.View;
-import android.widget.Button;
 import android.widget.ImageButton;
-import android.widget.ImageView;
 import android.widget.Toast;
+
+import androidx.annotation.Nullable;
+import androidx.appcompat.app.AppCompatActivity;
 
 import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class ExpertNiveau2 extends AppCompatActivity {
 
     public int vie;
     private int maxBlocEclaires;
@@ -29,41 +25,42 @@ public class MainActivity extends AppCompatActivity {
     private int[] tabStock;
     private  int compteur;
 
-
-    ImageButton premiereVie, deuxiemeVie;
-    ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
+    ImageButton boutonVert, boutonRouge, boutonJaune, boutonBleu, boutonRose;
+    ImageButton premiereVie, deuxiemeVie, troisiemeVie;
 
     Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
-
+        setContentView(R.layout.layout_expert_niveau_2);
 
         tabStock = new int[]{};
 
         compteur= 0;
-        nbBlocSequence = 1;
-        vie = 2;
-        maxBlocEclaires = 10;
-        nbBloc=4;
+        nbBlocSequence = 5;
+        vie = 3;
+        maxBlocEclaires = 20;
+        nbBloc=5;
 
 
-        boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
-        boutonRouge = (ImageButton) findViewById(R.id.imageButtonRouge);
-        boutonOrange = (ImageButton) findViewById(R.id.imageButtonOrange);
-        boutonBleu = (ImageButton) findViewById(R.id.imageButtonBleu);
+        boutonVert  = (ImageButton) findViewById(R.id.btn_vert);
+        boutonRouge = (ImageButton) findViewById(R.id.btn_rouge);
+        boutonJaune = (ImageButton) findViewById(R.id.btn_jaune);
+        boutonBleu = (ImageButton) findViewById(R.id.btn_bleu);
+        boutonRose = (ImageButton) findViewById(R.id.btn_rose);
 
         premiereVie = (ImageButton) findViewById(R.id.vie_1);
         deuxiemeVie = (ImageButton) findViewById(R.id.vie_2);
+        troisiemeVie = (ImageButton) findViewById(R.id.vie_3);
 
 
         ImageButton[] tabBoutons = {
                 boutonVert,
                 boutonRouge,
-                boutonOrange,
-                boutonBleu
+                boutonJaune,
+                boutonBleu,
+                boutonRose
         };
 
         try {
@@ -96,11 +93,11 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
-        boutonOrange.setOnClickListener(new View.OnClickListener() {
+        boutonRose.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 try {
-                    Verif(boutonOrange.getId());
+                    Verif(boutonRose.getId());
                 } catch (InterruptedException e) {
                     e.printStackTrace();
                 }
@@ -119,10 +116,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        boutonJaune.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                try {
+                    Verif(boutonJaune.getId());
+                } catch (InterruptedException e) {
+                    e.printStackTrace();
+                }
+            }
+        });
+
     }
 
-
     public void Verif(int idBoutonClicke) throws InterruptedException {
+
+        //Comparer avec l'ID du bouton aléatoire
+
 
         if(tabStock[compteur] == idBoutonClicke)
         {
@@ -156,36 +166,40 @@ public class MainActivity extends AppCompatActivity {
                 if(nbBlocSequence == maxBlocEclaires)
                 {
                     Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
-                    Intent niveauSuivant = new Intent(MainActivity.this, FacileNiveau2.class);
+                    Intent niveauSuivant = new Intent(ExpertNiveau2.this, ExpertNiveau3.class);
                     startActivity(niveauSuivant);
                 }
 
             }
             else
             {
-                Toast.makeText(getApplicationContext(), "bloc de séquence correct", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "bloc de séquence correcte", Toast.LENGTH_SHORT).show();
                 compteur++;
             }
 
         }
         else
         {
-            deuxiemeVie.getBackground().mutate().setAlpha(0);
+            troisiemeVie.getBackground().mutate().setAlpha(0);
             compteur=0;
             vie--;
 
-            Toast.makeText(getApplicationContext(), "Incorrect", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Incorrecte", Toast.LENGTH_SHORT).show();
 
 
             timer = new Timer();
+
+            if (vie == 1)
+            {
+                deuxiemeVie.getBackground().mutate().setAlpha(0);
+            }
 
             if(vie == 0){
                 premiereVie.getBackground().mutate().setAlpha(0);
                 Toast.makeText(getApplicationContext(), "Perdu", Toast.LENGTH_SHORT).show();
                 Thread.sleep(2000);
-                Intent recommencer = new Intent(MainActivity.this, RecommencerNiveau.class);
+                Intent recommencer = new Intent(ExpertNiveau2.this, RecommencerNiveau.class);
                 startActivity(recommencer);
-                Thread.sleep(2000);
 
             }
             else{
@@ -217,8 +231,9 @@ public class MainActivity extends AppCompatActivity {
 
         tabID[0] = boutonVert.getId();
         tabID[1] = boutonBleu.getId();
-        tabID[2] = boutonOrange.getId();
+        tabID[2] = boutonJaune.getId();
         tabID[3] = boutonRouge.getId();
+        tabID[4] = boutonRose.getId();
 
         nombreAleatoire = random.nextInt(tabID.length);
 
@@ -265,5 +280,7 @@ public class MainActivity extends AppCompatActivity {
         Thread.sleep(1000);
 
     }
+
+
 
 }

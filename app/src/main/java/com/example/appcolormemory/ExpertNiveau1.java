@@ -17,7 +17,7 @@ import java.util.Random;
 import java.util.Timer;
 import java.util.TimerTask;
 
-public class MainActivity extends AppCompatActivity {
+public class ExpertNiveau1 extends AppCompatActivity {
 
     public int vie;
     private int maxBlocEclaires;
@@ -30,23 +30,25 @@ public class MainActivity extends AppCompatActivity {
     private  int compteur;
 
 
-    ImageButton premiereVie, deuxiemeVie;
     ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
+    ImageButton premiereVie, deuxiemeVie, troisiemeVie;
 
     Random random = new Random();
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        setContentView(R.layout.activity_main);
+        setContentView(R.layout.layout_expert_niveau_1);
+
 
 
         tabStock = new int[]{};
 
         compteur= 0;
-        nbBlocSequence = 1;
-        vie = 2;
-        maxBlocEclaires = 10;
+        nbBlocSequence = 5;
+        vie = 3;
+        maxBlocEclaires = 20;
         nbBloc=4;
 
 
@@ -57,6 +59,7 @@ public class MainActivity extends AppCompatActivity {
 
         premiereVie = (ImageButton) findViewById(R.id.vie_1);
         deuxiemeVie = (ImageButton) findViewById(R.id.vie_2);
+        troisiemeVie = (ImageButton) findViewById(R.id.vie_3);
 
 
         ImageButton[] tabBoutons = {
@@ -124,6 +127,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void Verif(int idBoutonClicke) throws InterruptedException {
 
+        //Comparer avec l'ID du bouton aléatoire
+
+
         if(tabStock[compteur] == idBoutonClicke)
         {
             if(compteur+1 == nbBlocSequence){
@@ -156,37 +162,42 @@ public class MainActivity extends AppCompatActivity {
                 if(nbBlocSequence == maxBlocEclaires)
                 {
                     Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
-                    Intent niveauSuivant = new Intent(MainActivity.this, FacileNiveau2.class);
+                    Intent niveauSuivant = new Intent(ExpertNiveau1.this, ExpertNiveau2.class);
                     startActivity(niveauSuivant);
                 }
 
             }
             else
             {
-                Toast.makeText(getApplicationContext(), "bloc de séquence correct", Toast.LENGTH_SHORT).show();
+                Toast.makeText(getApplicationContext(), "bloc de séquence correcte", Toast.LENGTH_SHORT).show();
                 compteur++;
             }
 
         }
         else
         {
-            deuxiemeVie.getBackground().mutate().setAlpha(0);
+            troisiemeVie.getBackground().mutate().setAlpha(0);
             compteur=0;
             vie--;
 
-            Toast.makeText(getApplicationContext(), "Incorrect", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getApplicationContext(), "Incorrecte", Toast.LENGTH_SHORT).show();
 
 
             timer = new Timer();
+
+            if (vie == 1)
+            {
+                deuxiemeVie.getBackground().mutate().setAlpha(0);
+            }
 
             if(vie == 0){
                 premiereVie.getBackground().mutate().setAlpha(0);
                 Toast.makeText(getApplicationContext(), "Perdu", Toast.LENGTH_SHORT).show();
                 Thread.sleep(2000);
-                Intent recommencer = new Intent(MainActivity.this, RecommencerNiveau.class);
+                Intent recommencer = new Intent(ExpertNiveau1.this, RecommencerNiveau.class);
                 startActivity(recommencer);
                 Thread.sleep(2000);
-
+                //page échec : demander de recommencer
             }
             else{
                 timerTask = new TimerTask() {
@@ -265,5 +276,6 @@ public class MainActivity extends AppCompatActivity {
         Thread.sleep(1000);
 
     }
+
 
 }

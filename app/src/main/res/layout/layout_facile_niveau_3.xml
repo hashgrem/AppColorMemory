@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    xmlns:tool="http://schemas.android.com/tools"
+    tool:context=".FacileNiveau3"
+    xmlns:app="http://schemas.android.com/apk/res-auto">
+
+    <TextView
+        android:id="@+id/msg_difficulte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="Color Memory     Niveau Facile"
+        android:textColor="#0B4481"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+
+    <Button
+        android:id="@+id/msg_vie"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="20dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="19dp"
+        android:gravity="center"
+        android:text="Vies restantes:"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonVert"
+        app:layout_constraintEnd_toStartOf="@+id/vie_2"
+        app:layout_constraintHorizontal_bias="0.27"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.511" />
+
+    <ImageButton
+        android:id="@+id/vie_1"
+        android:layout_width="49dp"
+        android:layout_height="51dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/vie"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonRouge"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte" />
+
+    <ImageButton
+        android:id="@+id/vie_2"
+        android:layout_width="51dp"
+        android:layout_height="51dp"
+        android:layout_marginTop="24dp"
+        android:layout_marginEnd="20dp"
+        android:background="@drawable/vie"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonRouge"
+        app:layout_constraintEnd_toStartOf="@+id/vie_1"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte" />
+
+    <ImageButton
+        android:id="@+id/btn_jaune"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/btn_jaune"
+        app:layout_constraintBottom_toTopOf="@+id/btn_vert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <ImageButton
+        android:id="@+id/btn_bleu"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_bleu"
+        app:layout_constraintBottom_toTopOf="@+id/btn_vert"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.882" />
+
+    <ImageButton
+        android:id="@+id/btn_rouge"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_rouge"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.889" />
+
+    <ImageButton
+        android:id="@+id/btn_rose"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="16dp"
+        android:background="@drawable/btn_rose"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.889" />
+
+    <ImageButton
+        android:id="@+id/btn_vert"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="@drawable/btn_vert"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.069"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.569" />
+
+    <ImageButton
+        android:id="@+id/btn_violet"
+        android:layout_width="192dp"
+        android:layout_height="141dp"
+        android:layout_marginEnd="16dp"
+        android:background="@drawable/btn_violet"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_difficulte"
+        app:layout_constraintVertical_bias="0.577" />
+
+</androidx.constraintlayout.widget.ConstraintLayout>
