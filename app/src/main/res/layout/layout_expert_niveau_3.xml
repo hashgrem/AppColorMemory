@@ -7,6 +7,19 @@
     tool:context=".ExpertNiveau3">
 
     <TextView
+        android:id="@+id/score"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginStart="36dp"
+        android:text=""
+        android:textSize="25dp"
+        android:textColor="#F41616"
+        app:layout_constraintBottom_toTopOf="@+id/imageButtonVert"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/msg_vie"
+        app:layout_constraintVertical_bias="0.468" />
+
+    <TextView
         android:id="@+id/msg_difficulte"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"

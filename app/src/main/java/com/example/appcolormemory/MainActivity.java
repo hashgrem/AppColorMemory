@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -28,12 +29,18 @@ public class MainActivity extends AppCompatActivity {
     private TimerTask timerTask;
     private int[] tabStock;
     private  int compteur;
+    private float score;
+    private int poidsMode;
 
 
     ImageButton premiereVie, deuxiemeVie;
     ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
 
+    TextView affichage_score;
+
     Random random = new Random();
+
+    SQLiteHelper db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -46,8 +53,12 @@ public class MainActivity extends AppCompatActivity {
         compteur= 0;
         nbBlocSequence = 1;
         vie = 2;
-        maxBlocEclaires = 10;
+        maxBlocEclaires = 3;
         nbBloc=4;
+        score = 0;
+        poidsMode = 1;
+
+        affichage_score = (TextView) findViewById(R.id.score);
 
 
         boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
@@ -65,6 +76,8 @@ public class MainActivity extends AppCompatActivity {
                 boutonOrange,
                 boutonBleu
         };
+
+        affichage_score.setText("Score: " +score);
 
         try {
             CreationSequence(maxBlocEclaires);
@@ -124,6 +137,9 @@ public class MainActivity extends AppCompatActivity {
 
     public void Verif(int idBoutonClicke) throws InterruptedException {
 
+        db = new SQLiteHelper(getApplicationContext());
+        Intent intent = getIntent();
+
         if(tabStock[compteur] == idBoutonClicke)
         {
             if(compteur+1 == nbBlocSequence){
@@ -155,7 +171,9 @@ public class MainActivity extends AppCompatActivity {
 
                 if(nbBlocSequence == maxBlocEclaires)
                 {
-                    Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
+                    score = poidsMode*1;
+                    affichage_score.setText("Score: " +score);
+                    Thread.sleep(3000);
                     Intent niveauSuivant = new Intent(MainActivity.this, FacileNiveau2.class);
                     startActivity(niveauSuivant);
                 }

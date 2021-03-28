@@ -28,12 +28,10 @@ public class Profil extends AppCompatActivity {
                 intent.getStringExtra("username_variable");
 
                 affichage_username = (TextView) findViewById(R.id.profil_nom_utilisateur);
-                affichage_username.setText("Nom D'utilisateur : "+intent.getStringExtra("username_variable"));
-
+                affichage_username.setText("Nom d'utilisateur : "+intent.getStringExtra("username_variable"));
 
                 affichage_score = (TextView) findViewById(R.id.profil_score);
                 affichage_score.setText(" Votre Score" +String.valueOf(db.recuperation_score(intent.getStringExtra("username_variable"))));
-
 
             }
         }
