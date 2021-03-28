@@ -38,6 +38,11 @@ public class Inscription extends AppCompatActivity {
             public void onClick(View v) {
                 if( db.addJoueur(prenom.getText().toString(),email.getText().toString(),password.getText().toString(), 0) ){
                     Intent intent = new Intent(getApplicationContext(), MainMenu.class);
+                    intent.putExtra("datapass",prenom.getText().toString());
+
+                    String last_activity = "Inscription";
+
+                    intent.putExtra("last_activity", last_activity );
                     startActivity((intent));
                     finish();
                 }

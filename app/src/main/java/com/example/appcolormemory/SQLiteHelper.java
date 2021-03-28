@@ -79,5 +79,35 @@ public class SQLiteHelper extends SQLiteOpenHelper{
 
         }
 
+        int recuperation_score(String username){
+
+
+            SQLiteDatabase db =this.getReadableDatabase();
+           String sql= "SELECT Score FROM JOUEURS WHERE name ='" +username+ "'";
+
+            Cursor cursor=db.rawQuery(sql, null);
+            cursor.moveToFirst();
+
+            return cursor.getInt(0);
+
+        }
+
+         String recuperation_username(String email){
+
+             SQLiteDatabase db =this.getReadableDatabase();
+             String sql= "SELECT name FROM JOUEURS WHERE login ='" +email+ "'";
+
+             Cursor cursor=db.rawQuery(sql, null);
+
+             cursor.moveToFirst();
+
+
+
+
+
+             return cursor.getString(0);
+
+        }
+
 
 }
