@@ -29,29 +29,16 @@ public class MainActivity extends AppCompatActivity {
     private int[] tabStock;
     private  int compteur;
 
-    ImageButton BoutonVert, BoutonRouge, BoutonOrange, BoutonBleu;
-    ImageButton tmpBouton, tmp2Bouton;
-    ImageButton clickBouton;
 
     ImageButton premiereVie, deuxiemeVie;
-
-    Random random = new Random();
-
     ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
 
-
-    ImageButton[] stockBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
-    ImageButton[] tabBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
-
-    int[] test;
-
-
+    Random random = new Random();
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-
 
 
         tabStock = new int[]{};
@@ -78,11 +65,6 @@ public class MainActivity extends AppCompatActivity {
                 boutonOrange,
                 boutonBleu
         };
-
-        test = new int[]{
-                boutonVert.getId()
-        };
-
 
         try {
             CreationSequence(maxBlocEclaires);
@@ -141,9 +123,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Verif(int idBoutonClicke) throws InterruptedException {
-
-        //Comparer avec l'ID du bouton aléatoire
-
 
         if(tabStock[compteur] == idBoutonClicke)
         {

@@ -29,22 +29,10 @@ public class HardNiveau1 extends AppCompatActivity {
     private int[] tabStock;
     private  int compteur;
 
-    ImageButton BoutonVert, BoutonRouge, BoutonOrange, BoutonBleu;
-    ImageButton tmpBouton, tmp2Bouton;
-    ImageButton clickBouton;
-
+    ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
     ImageButton premiereVie, deuxiemeVie;
 
     Random random = new Random();
-
-    ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
-
-
-    ImageButton[] stockBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
-    ImageButton[] tabBoutons = {boutonVert, boutonRouge, boutonOrange, boutonBleu};
-
-    int[] test;
-
 
 
     @Override
@@ -78,11 +66,6 @@ public class HardNiveau1 extends AppCompatActivity {
                 boutonOrange,
                 boutonBleu
         };
-
-        test = new int[]{
-                boutonVert.getId()
-        };
-
 
         try {
             CreationSequence(maxBlocEclaires);
