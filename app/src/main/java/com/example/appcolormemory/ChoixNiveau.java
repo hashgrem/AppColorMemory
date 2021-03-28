@@ -6,7 +6,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
-
+import android.widget.ImageButton;
 
 
 public class ChoixNiveau extends AppCompatActivity {
@@ -15,6 +15,7 @@ public class ChoixNiveau extends AppCompatActivity {
     private Button btn_niveau_difficile;
     private Button btn_niveau_expert;
     private Button btn_niveau_chrono;
+    private ImageButton btn_help;
 
 
 
@@ -27,6 +28,15 @@ public class ChoixNiveau extends AppCompatActivity {
         this.btn_niveau_difficile = (Button) findViewById(R.id.btn_niv_difficile);
         this.btn_niveau_expert = (Button) findViewById(R.id.btn_niv_expert);
         this.btn_niveau_chrono = (Button) findViewById(R.id.btn_niv_chrono);
+        btn_help = (ImageButton) findViewById(R.id.btn_help);
+
+        btn_help.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent help = new Intent(getApplicationContext(), Help.class);
+                startActivity(help);
+            }
+        });
 
         btn_niveau_facile.setOnClickListener(new View.OnClickListener() {
             @Override

@@ -36,6 +36,7 @@
         <activity android:name=".ExpertNiveau5" />
         <activity android:name=".ExpertNiveau6" />
         <activity android:name=".ExpertNiveau7" />
+        <activity android:name=".Help" />
         <activity android:name=".RecommencerNiveau" />
         <activity android:name=".Profil" />
         <activity android:name=".MainMenu" />

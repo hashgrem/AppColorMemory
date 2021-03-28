@@ -1,0 +1,91 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Help">
+
+    <ImageView
+        android:id="@+id/inscription_logo_image"
+        android:layout_width="150dp"
+        android:layout_height="150dp"
+        android:layout_gravity="center"
+        android:layout_marginTop="16dp"
+        android:src="@drawable/cercle_couleurs"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.498"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        tools:ignore="MissingConstraints" />
+
+    <ImageButton
+        android:id="@+id/btn_retour"
+        android:layout_width="60dp"
+        android:layout_height="60dp"
+        android:layout_marginTop="16dp"
+        android:background="@drawable/btn_retour_arriere"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintHorizontal_bias="0.068"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent" />
+
+    <TextView
+        android:id="@+id/msg_difficulte"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:gravity="center"
+        android:text="A quoi correspondent les difficultés ?"
+        android:textSize="40sp"
+        app:layout_constraintEnd_toEndOf="parent"
+        android:textColor="#08198C"
+        app:layout_constraintTop_toBottomOf="@+id/inscription_logo_image"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/help_facile"
+        android:layout_width="368dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="24dp"
+        android:background="#4758F4"
+        android:text="Facile: Le mode est composé de 7 niveaux. A chaque niveau, se trouve un bloc éclairable supplémentaire, en commençant par 4 pour le niveau 1. Vous avez 2 vies, si vous échouez... vous perdez 1 vie. Vous devez reproduire les séquences de 1 à 10 blocs pour chaque niveau."
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.472"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/help_difficile"
+        android:layout_width="368dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="24dp"
+        android:background="#4758F4"
+        android:text="Difficile: Le mode est composé de 7 niveaux. A chaque niveau, se trouve un bloc éclairable supplémentaire, en commençant par 4 pour le niveau 1. Vous avez 2 vies, si vous échouez... vous perdez 1 vie. Vous devez reproduire les séquences de 3 à 15 blocs pour chaque niveau."
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.697"
+        tools:ignore="MissingConstraints" />
+
+    <TextView
+        android:id="@+id/help_expert"
+        android:layout_width="368dp"
+        android:layout_height="117dp"
+        android:layout_marginStart="24dp"
+        android:background="#4758F4"
+        android:text="Expert: Le mode est composé de 7 niveaux. A chaque niveau, se trouve un bloc éclairable supplémentaire, en commençant par 4 pour le niveau 1. Vous avez 3 vies, si vous échouez... vous perdez 1 vie. Vous devez reproduire les séquences de 5 à 20 blocs pour chaque niveau."
+        android:textColor="#FFFFFF"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.913"
+        tools:ignore="MissingConstraints" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

@@ -174,6 +174,7 @@ public class ExpertNiveau1 extends AppCompatActivity {
                 {
                     score = poidsMode*1;
                     affichage_score.setText("Score: " +score);
+                    //Appel de la fonction AddScore pour enovyer la variable score en bd
                     Thread.sleep(3000);
                     Intent niveauSuivant = new Intent(ExpertNiveau1.this, ExpertNiveau2.class);
                     startActivity(niveauSuivant);

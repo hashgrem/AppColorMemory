@@ -92,11 +92,23 @@
         android:id="@+id/logo_image"
         android:layout_width="132dp"
         android:layout_height="80dp"
-        android:layout_marginStart="136dp"
+        android:layout_marginStart="80dp"
         android:src="@drawable/cercle_couleurs"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/msg_difficulte" />
+
+
+    <ImageButton
+        android:id="@+id/btn_help"
+        android:layout_width="80dp"
+        android:layout_height="80dp"
+        android:layout_marginStart="236dp"
+        android:background="@drawable/btn_help"
+        app:layout_constraintBottom_toBottomOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.975" />
 
     <androidx.constraintlayout.widget.Guideline
         android:id="@+id/guideline7"
