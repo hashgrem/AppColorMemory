@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -28,9 +29,13 @@ public class HardNiveau1 extends AppCompatActivity {
     private TimerTask timerTask;
     private int[] tabStock;
     private  int compteur;
+    private float score;
+    private float poidsMode;
 
     ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
     ImageButton premiereVie, deuxiemeVie;
+
+    TextView affichage_score;
 
     Random random = new Random();
 
@@ -49,6 +54,10 @@ public class HardNiveau1 extends AppCompatActivity {
         vie = 2;
         maxBlocEclaires = 15;
         nbBloc=4;
+        score = 0;
+        poidsMode = 1.5f;
+
+        affichage_score = (TextView) findViewById(R.id.score);
 
 
         boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
@@ -66,6 +75,8 @@ public class HardNiveau1 extends AppCompatActivity {
                 boutonOrange,
                 boutonBleu
         };
+
+        affichage_score.setText("Score: " +score);
 
         try {
             CreationSequence(maxBlocEclaires);
@@ -157,12 +168,14 @@ public class HardNiveau1 extends AppCompatActivity {
                 timer.schedule(timerTask, 2000);
                 nbBlocSequence++;
 
-              /*  if(nbBlocSequence == maxBlocEclaires)
+                if(nbBlocSequence == maxBlocEclaires)
                 {
-                    Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
+                    score = poidsMode*1;
+                    affichage_score.setText("Score: " +score);
+                    Thread.sleep(3000);
                     Intent niveauSuivant = new Intent(HardNiveau1.this, HardNiveau2.class);
                     startActivity(niveauSuivant);
-                }*/
+                }
 
             }
             else

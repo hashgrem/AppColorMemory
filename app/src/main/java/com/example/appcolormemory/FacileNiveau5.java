@@ -4,6 +4,7 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.view.View;
 import android.widget.ImageButton;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import androidx.annotation.Nullable;
@@ -24,9 +25,13 @@ public class FacileNiveau5 extends AppCompatActivity {
     private TimerTask timerTask;
     private int[] tabStock;
     private  int compteur;
+    private float score;
+    private int poidsMode;
 
     ImageButton boutonVert, boutonRouge, boutonJaune, boutonBleu, boutonRose, boutonViolet, boutonOrange, boutonMarron;
     ImageButton premiereVie, deuxiemeVie;
+
+    TextView affichage_score;
 
     Random random = new Random();
 
@@ -42,6 +47,10 @@ public class FacileNiveau5 extends AppCompatActivity {
         vie = 2;
         maxBlocEclaires = 10;
         nbBloc=8;
+        score = 4;
+        poidsMode = 1;
+
+        affichage_score = (TextView) findViewById(R.id.score);
 
 
         boutonVert  = (ImageButton) findViewById(R.id.btn_vert);
@@ -66,6 +75,8 @@ public class FacileNiveau5 extends AppCompatActivity {
                 boutonOrange,
                 boutonMarron
         };
+
+        affichage_score.setText("Score: " +score);
 
         try {
             CreationSequence(maxBlocEclaires);
@@ -203,7 +214,9 @@ public class FacileNiveau5 extends AppCompatActivity {
 
                 if(nbBlocSequence == maxBlocEclaires)
                 {
-                    Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
+                    score = poidsMode*5;
+                    affichage_score.setText("Score: " +score);
+                    Thread.sleep(3000);
                     Intent niveauSuivant = new Intent(FacileNiveau5.this, FacileNiveau6.class);
                     startActivity(niveauSuivant);
                 }

@@ -40,8 +40,6 @@ public class MainActivity extends AppCompatActivity {
 
     Random random = new Random();
 
-    SQLiteHelper db;
-
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -53,7 +51,7 @@ public class MainActivity extends AppCompatActivity {
         compteur= 0;
         nbBlocSequence = 1;
         vie = 2;
-        maxBlocEclaires = 3;
+        maxBlocEclaires = 10;
         nbBloc=4;
         score = 0;
         poidsMode = 1;
@@ -136,9 +134,6 @@ public class MainActivity extends AppCompatActivity {
 
 
     public void Verif(int idBoutonClicke) throws InterruptedException {
-
-        db = new SQLiteHelper(getApplicationContext());
-        Intent intent = getIntent();
 
         if(tabStock[compteur] == idBoutonClicke)
         {

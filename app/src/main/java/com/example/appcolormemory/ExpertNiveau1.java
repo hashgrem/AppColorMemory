@@ -11,6 +11,7 @@ import android.view.View;
 import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.ImageView;
+import android.widget.TextView;
 import android.widget.Toast;
 
 import java.util.Random;
@@ -28,10 +29,14 @@ public class ExpertNiveau1 extends AppCompatActivity {
     private TimerTask timerTask;
     private int[] tabStock;
     private  int compteur;
+    private float score;
+    private int poidsMode;
 
 
     ImageButton boutonVert, boutonRouge, boutonOrange, boutonBleu;
     ImageButton premiereVie, deuxiemeVie, troisiemeVie;
+
+    TextView affichage_score;
 
     Random random = new Random();
 
@@ -50,6 +55,10 @@ public class ExpertNiveau1 extends AppCompatActivity {
         vie = 3;
         maxBlocEclaires = 20;
         nbBloc=4;
+        score = 0;
+        poidsMode = 3;
+
+        affichage_score = (TextView) findViewById(R.id.score);
 
 
         boutonVert  = (ImageButton) findViewById(R.id.imageButtonVert);
@@ -68,6 +77,8 @@ public class ExpertNiveau1 extends AppCompatActivity {
                 boutonOrange,
                 boutonBleu
         };
+
+        affichage_score.setText("Score: " +score);
 
         try {
             CreationSequence(maxBlocEclaires);
@@ -161,7 +172,9 @@ public class ExpertNiveau1 extends AppCompatActivity {
 
                 if(nbBlocSequence == maxBlocEclaires)
                 {
-                    Toast.makeText(getApplicationContext(), "Niveau Terminé", Toast.LENGTH_SHORT).show();
+                    score = poidsMode*1;
+                    affichage_score.setText("Score: " +score);
+                    Thread.sleep(3000);
                     Intent niveauSuivant = new Intent(ExpertNiveau1.this, ExpertNiveau2.class);
                     startActivity(niveauSuivant);
                 }
